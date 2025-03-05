@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h2>Available Movies</h2>
+{% if movies %}
+<p><a href = "{% url 'movie_form' %}" class = "btn btn-primary" >Add New Movie  </a> </p>
+<ul class="list-group"></ul>
+{% for movie in movies %}
+<li class="list-group-item"></li>
+<h5>{{ movie.title }}</h5>
+<p>{{ movie.description }}</p>
+<p>{{ movie.release_date }}</p>
+<p>{{ movie.duration }}</p>
+
+<a class="btn btn-primary" href = "{% url 'book_seats' movie.movie_id %}">Book now</a>
+<a class="btn btn-primary" href = "{% url 'update_movie' movie.movie_id %}">View/Update Movie</a>            <a class="btn btn-danger" href = "{% url 'delete_movie' movie.movie_id %}">Delete Movie</a>
+
+
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p> There are no Movies </p>
+<p><a href = "{% url 'movie_form' %}" class = "btn btn-primary" >Add New Movie  </a> </p>
+{% endif %}
+</center>
+{% endblock %}

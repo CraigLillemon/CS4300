@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if seats %}
+<h2>Available Seats</h2>
+
+<center>
+    <h1>Movie</h1>
+</center>
+
+<ul class="list-group"></ul>
+{% for seat in seats %}
+
+{% if seat.seat_status == False %}
+
+
+<a class="btn btn-primary" href="{% url 'book_seat' movie.movie_id seat.seat_number%}">{{ seat.seat_number }}</a>
+  
+{%else%}
+<a class="btn btn-secondary disabled" href="#" aria-disabled="true">{{ seat.seat_number }}</a>
+
+
+{%endif%}
+
+
+{% endfor %}
+</ul>
+{% else %}
+<p> There are no Seats </p>
+{% endif %}
+{% endblock %}

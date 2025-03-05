@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Booking History</h2>
+{% if bookings %}
+
+{% for booking in bookings %}
+<li class="list-group-item"></li>
+<h5>Movie Title: {{ booking.movie.title }}</h5>
+<p>Release Date: {{ booking.movie.release_date }}</p>
+<p>Seat Number: {{ booking.seat.seat_number }}</p>
+<p>Booking Date:{{ booking.booking_date }}</p>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p> There are no bookings </p>
+{% endif %}
+{% endblock %}
